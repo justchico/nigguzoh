@@ -1,0 +1,105 @@
+<html>
+<head>
+    <title>Slot Machine Game</title>
+    <style>
+        body {
+            background-color: gray;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            
+        }
+
+        .container {
+            background-color: black;
+            border-radius: 10px;
+            
+        }
+        .slot-machine {
+            margin-left: 450px;
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            width: 600px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+            background-color: gainsboro;
+            border-radius: 20px;
+        }
+
+        .slot-machine img {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        
+        }
+
+        button {
+            background-color: gainsboro;
+            margin-left: 730px;
+            border-color: black;
+            border-radius: 5px;
+            width: 100;
+            height: 50px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slot-machine">
+            <img src="cherries.png" alt="Image 1">
+            <img src="joker.png" alt="Image 2">
+            <img src="seven.png" alt="Image 3">
+        </div>
+        <h1>Lets play Slot Machine!</h1>
+    </div>
+    <script>
+        function spin() {
+            var images = ['cherries.png', 'joker.png', 'seven.png'];
+            var randomIndex1 = Math.floor(Math.random() * images.length);
+            var randomIndex2 = Math.floor(Math.random() * images.length);
+            var randomIndex3 = Math.floor(Math.random() * images.length);
+
+            var img1 = document.createElement('img');
+            img1.src = images[randomIndex1];
+            img1.alt = 'Image 1';
+
+            var img2 = document.createElement('img');
+            img2.src = images[randomIndex2];
+            img2.alt = 'Image 2';
+
+            var img3 = document.createElement('img');
+            img3.src = images[randomIndex3];
+            img3.alt = 'Image 3';
+
+            var slotMachine = document.querySelector('.slot-machine');
+            slotMachine.innerHTML = '';
+            slotMachine.appendChild(img1);
+            slotMachine.appendChild(img2);
+            slotMachine.appendChild(img3);
+
+            var result = document.querySelector('h1');
+            if (randomIndex1 === randomIndex2 && randomIndex2 === randomIndex3) {
+                result.innerHTML = 'Congratulation! You Win!';
+            } else {
+                result.innerHTML = 'Sorry! You Lost!';
+            }
+        }
+        function reset() {
+        }
+    </script>
+    <button onclick="spin()">Spin</button>
+</body>
+</html>
